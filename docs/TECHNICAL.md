@@ -100,11 +100,11 @@ Pads carry only silkscreen labels, never effect names.
 - Kotlin, Jetpack Compose (foundation only), CameraX, OpenGL ES 3.0. Minimum Android 12 (API 31).
 - Build: `./gradlew :app:assembleDebug`
 - Tests: `./gradlew :capture:testDebugUnitTest` runs the GIF encoder tests, which write GIFs and read them back with the JDK's decoder. There are no other automated tests.
-- Tested by hand on one Samsung tablet only.
+- Tested by hand on one phone only, a Pixel 8 Pro.
 
 ## Known gaps
 
 - Wires on a board are lost when the app closes unless saved as a mod.
 - GIFs and video do not carry the patch.
-- The release build (minified) has not been tried on a device.
+- Releases are signed with a development key, not a dedicated release key.
 - The boards are drawn in code; there is no hand-drawn art.

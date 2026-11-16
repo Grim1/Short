@@ -1,6 +1,6 @@
 # Short: Circuit-Bent Camera
 
-> **Disclaimer:** this app is vibecoded. The code was written by an AI (Claude). My input was creative direction and little else. It has only been tried on one Android tablet, so expect rough edges.
+> **Disclaimer:** this app is vibecoded. The code was written by an AI (Claude). My input was creative direction and little else. It has only been tried on one Android phone, so expect rough edges.
 
 Short is an Android camera app for making glitch photos, GIFs and video.
 

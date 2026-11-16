@@ -12,7 +12,7 @@ android {
         minSdk = 31
         targetSdk = 37
         versionCode = 2
-        versionName = "0.1"
+        versionName = "0.1.0"
     }
 
     buildTypes {
@@ -21,6 +21,9 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
+            // There is no release key yet, so releases are signed with this machine's
+            // development key. Swap in a real signing config before any store release.
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 
