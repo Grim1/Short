@@ -3,6 +3,8 @@ package app.shortcam.board
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
+import kotlin.math.abs
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
@@ -72,6 +74,7 @@ class BoardState(val body: Body) {
             // Starts taut and drops, so a new wire swings into place.
             it.velY = 30f
             wires += it
+            stirred++
         }
     }
 
@@ -159,10 +162,19 @@ class BoardState(val body: Body) {
         out
     }
 
-    /** Advances the wire physics by [dt] seconds. */
-    internal fun step(dt: Float) {
+    /**
+     * Counts every knock that can set a wire swinging. The view watches it to know
+     * when to start animating again after everything has come to rest.
+     */
+    internal var stirred by mutableIntStateOf(0)
+        private set
+
+    /** Advances the wire physics by [dt] seconds. Returns false once every wire hangs still. */
+    internal fun step(dt: Float): Boolean {
         val step = dt.coerceAtMost(0.033f)
+        var moving = false
         for (w in wires) {
+            if (abs(w.velX) + abs(w.velY) > 0.05f || abs(w.sagX) + abs(w.sagY - w.restSag) > 0.02f) moving = true
             val ax = -STIFFNESS * w.sagX - DAMPING * w.velX
             val ay = -STIFFNESS * (w.sagY - w.restSag) - DAMPING * w.velY
             w.velX += ax * step
@@ -170,10 +182,12 @@ class BoardState(val body: Body) {
             w.sagX += w.velX * step
             w.sagY += w.velY * step
         }
+        return moving
     }
 
     /** Knocks wires near a board position, so they sway when a finger brushes past. */
     internal fun nudge(x: Float, y: Float, strength: Float) {
+        if (wires.isNotEmpty()) stirred++
         for (w in wires) {
             val mx = (w.a.x + w.b.x) / 2 + w.sagX
             val my = (w.a.y + w.b.y) / 2 + w.sagY

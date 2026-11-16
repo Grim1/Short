@@ -85,6 +85,8 @@ import app.shortcam.engine.Faults
 import androidx.compose.runtime.produceState
 import java.util.Date
 import java.util.concurrent.Executors
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.delay
 import kotlin.math.roundToInt
 import kotlinx.coroutines.launch
@@ -123,7 +125,9 @@ private fun ShortApp(activity: ComponentActivity) {
     val notebooks = remember { bodies.associate { it.id to Notebook(activity.filesDir, it) } }
     val mods = remember { ModStore(activity.filesDir) }
     val settings = remember { Settings(activity.filesDir) }
-    val last = remember { LastCapture(activity.applicationContext).also { it.findLatest() } }
+    val last = remember { LastCapture(activity.applicationContext) }
+    // Finding the newest capture queries the media store and decodes a thumbnail: off the main thread.
+    LaunchedEffect(Unit) { withContext(Dispatchers.IO) { last.findLatest() } }
     var inHand by remember { mutableStateOf<Body?>(null) }
     var started by remember { mutableStateOf(false) }
 
@@ -433,13 +437,21 @@ private fun Camera(
             activity.runOnUiThread { firstShot = null }
             saver.execute {
                 // Light adds up on film; each shot is held back a little so the pair does not burn out.
-                val a = first.rgba
-                val b = frame.rgba
-                for (i in 0 until frame.width * frame.height * 4) {
-                    val sum = ((a.get(i).toInt() and 0xFF) + (b.get(i).toInt() and 0xFF)) * 5 / 8
-                    b.put(i, minOf(sum, 255).toByte())
+                val n = frame.width * frame.height * 4
+                val a = ByteArray(n)
+                val b = ByteArray(n)
+                first.rgba.rewind()
+                first.rgba.get(a)
+                frame.rgba.rewind()
+                frame.rgba.get(b)
+                for (i in 0 until n) {
+                    val sum = ((a[i].toInt() and 0xFF) + (b[i].toInt() and 0xFF)) * 5 / 8
+                    b[i] = minOf(sum, 255).toByte()
                 }
-                savePhoto(frame, "double exposure")
+                savePhoto(
+                    StillFrame(frame.width, frame.height, ByteBuffer.wrap(b), frame.turn, frame.compressor),
+                    "double exposure",
+                )
             }
         }
     }
@@ -457,6 +469,7 @@ private fun Camera(
         // Touched only on the saving thread.
         var sums: IntArray? = null
         var peak: ByteArray? = null
+        var scratch: ByteArray? = null
         var size = 0 to 0
         var count = 0
         engine.startBurst(
@@ -468,8 +481,11 @@ private fun Camera(
                     val p = peak ?: ByteArray(n).also { peak = it }
                     if (s.size != n) return@execute
                     size = width to height
+                    val bytes = scratch ?: ByteArray(n).also { scratch = it }
+                    rgba.rewind()
+                    rgba.get(bytes)
                     for (i in 0 until n) {
-                        val v = rgba.get(i).toInt() and 0xFF
+                        val v = bytes[i].toInt() and 0xFF
                         s[i] += v
                         if (v > (p[i].toInt() and 0xFF)) p[i] = v.toByte()
                     }
@@ -485,8 +501,8 @@ private fun Camera(
                     } else {
                         // Half the average, half the brightest each spot ever was: movement
                         // blurs, and anything bright leaves its trail.
-                        val out = ByteBuffer.allocateDirect(s.size)
-                        for (i in s.indices) out.put(i, ((s[i] / count + (p[i].toInt() and 0xFF)) / 2).toByte())
+                        for (i in s.indices) p[i] = ((s[i] / count + (p[i].toInt() and 0xFF)) / 2).toByte()
+                        val out = ByteBuffer.wrap(p)
                         // Burst frames are already upright and have been through the live compressor.
                         savePhoto(
                             StillFrame(size.first, size.second, out, turn = 0, compressor = CompressorFault(0f, emptyList(), 0f, 0L)),

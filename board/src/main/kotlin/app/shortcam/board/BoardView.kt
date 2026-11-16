@@ -39,6 +39,8 @@ import kotlin.math.cos
 import kotlin.math.hypot
 import kotlin.math.sin
 import kotlinx.coroutines.Job
+import androidx.compose.runtime.snapshotFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -93,10 +95,20 @@ fun BoardView(state: BoardState, modifier: Modifier = Modifier) {
     LaunchedEffect(state) {
         var last = 0L
         while (true) {
-            withFrameNanos { now ->
-                if (last != 0L) state.step((now - last) / 1e9f)
+            val moving = withFrameNanos { now ->
+                val swinging = last == 0L || state.step((now - last) / 1e9f)
                 last = now
                 frame = now
+                swinging
+            }
+            // With the wires at rest, nothing bent (so no LED flickering) and no finger
+            // on the board, there is nothing to animate: wait here instead of redrawing
+            // sixty times a second.
+            fun busy() = state.faultValues.isNotEmpty() || state.touches.isNotEmpty() || drags.isNotEmpty()
+            if (!moving && !busy()) {
+                val seen = state.stirred
+                snapshotFlow { state.stirred != seen || busy() }.first { it }
+                last = 0L
             }
         }
     }

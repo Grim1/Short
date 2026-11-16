@@ -15,6 +15,15 @@ android {
         versionName = "0.1"
     }
 
+    buildTypes {
+        release {
+            // Strips unused code and resources and optimises what is left.
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
+        }
+    }
+
     buildFeatures {
         compose = true
     }

@@ -37,12 +37,16 @@ class GifWriter(
         require(rgba.capacity() >= count * 4) { "frame is smaller than ${width}x$height" }
 
         // Colours are binned to 5 bits a channel; the palette is chosen from the bins.
+        // One bulk copy out of the buffer is far quicker than reading it a byte at a time.
+        val bytes = ByteArray(count * 4)
+        rgba.rewind()
+        rgba.get(bytes)
         val bins = IntArray(count)
         val histogram = IntArray(BINS)
         for (i in 0 until count) {
-            val r = rgba.get(i * 4).toInt() and 0xFF
-            val g = rgba.get(i * 4 + 1).toInt() and 0xFF
-            val b = rgba.get(i * 4 + 2).toInt() and 0xFF
+            val r = bytes[i * 4].toInt() and 0xFF
+            val g = bytes[i * 4 + 1].toInt() and 0xFF
+            val b = bytes[i * 4 + 2].toInt() and 0xFF
             val bin = (r shr 3 shl 10) or (g shr 3 shl 5) or (b shr 3)
             bins[i] = bin
             histogram[bin]++

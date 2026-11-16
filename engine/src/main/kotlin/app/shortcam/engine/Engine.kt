@@ -544,6 +544,14 @@ class Engine(private val config: EngineConfig) {
         for (stage in stages) {
             // A still gets the real compressor, on its encoded bytes, not the live approximation.
             if (forStill && stage.def.id == StageId.COMPRESSOR) continue
+            // A stage with nothing bent passes the picture through untouched, so its pass
+            // is skipped. The exceptions are stages that keep history, which must see every
+            // frame, and stages that alter the picture even when healthy.
+            val idle = healthy || stage.effective.all { it == 0f }
+            val alwaysActs = stage.def.usesHistory ||
+                (stage.def.id == StageId.ADC && config.bitDepth < 8) ||
+                (stage.def.id == StageId.ENCODER && config.chromaSoftness > 0f)
+            if (idle && !alwaysActs) continue
             val src = dst
             dst = spare
             spare = src
