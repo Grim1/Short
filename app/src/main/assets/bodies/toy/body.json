@@ -1,0 +1,93 @@
+{
+  "format": 1,
+  "maker": "CSE",
+  "model": "CSE Pix Pal",
+  "printed": ["100K PIXELS!", "HOLDS 20 PHOTOS"],
+  "serial": "CSE-PXPL-3390027",
+  "madeIn": "MADE IN CHINA",
+  "shell": "#E0457A",
+  "ink": "#FFFFFF",
+  "accent": "#FFE14A",
+  "viewfinder": {
+    "font": "serif",
+    "color": "#FFE14A",
+    "shots": 20,
+    "osd": { "topRight": "{shots}" },
+    "shutter": { "length": 0.05, "noise": 0.25, "beep": 3200 },
+    "boot": { "seconds": 1.2, "background": "#E0457A", "lines": ["Pix Pal", "HELLO!"], "exit": "blink" }
+  },
+  "crosstalk": 0.85,
+
+  "sensor": { "width": 352, "height": 288, "bits": 4 },
+  "preview": { "width": 352, "height": 288 },
+  "stages": ["SENSOR", "ADC", "MEMORY", "SYNC"],
+  "stability": 0.3,
+
+  "board": {
+    "width": 100,
+    "height": 150,
+    "color": "#1F4E8C",
+    "preview": { "x": 6, "y": 10, "w": 36, "h": 44 },
+    "parts": [
+      { "type": "ic", "label": "CSE PP-1\nCAM-ON-CHIP", "x": 54, "y": 12, "w": 36, "h": 22, "stage": "SENSOR" },
+      { "type": "ic", "label": "CSE 256K\nRAM", "x": 10, "y": 70, "w": 30, "h": 15, "stage": "MEMORY" },
+      { "type": "xtal", "label": "X1", "x": 60, "y": 62, "w": 12, "h": 6 },
+      { "type": "cap", "label": "C1", "x": 45, "y": 14, "w": 7, "h": 7 },
+      { "type": "cap", "label": "C2", "x": 82, "y": 60, "w": 8, "h": 8 },
+      { "type": "r", "label": "", "x": 46, "y": 62, "w": 4, "h": 2 },
+      { "type": "c", "label": "", "x": 46, "y": 67, "w": 4, "h": 2 },
+      { "type": "r", "label": "", "x": 93, "y": 14, "w": 2, "h": 4 },
+      { "type": "r", "label": "", "x": 4, "y": 64, "w": 4, "h": 2 },
+
+      { "type": "led", "label": "PWR", "x": 46, "y": 5, "w": 3, "h": 3 },
+      { "type": "led", "label": "D1", "x": 93, "y": 76, "w": 3, "h": 3, "stage": "SYNC" },
+
+      { "type": "logo", "label": "CSE", "x": 6, "y": 137, "w": 18, "h": 8 },
+      { "type": "silk", "label": "PIX PAL PCB-A", "x": 27, "y": 138, "h": 2.2 },
+      { "type": "silk", "label": "S/N CSE-PXPL-3390027", "x": 27, "y": 142, "h": 2.2 },
+      { "type": "sticker", "label": "MADE IN CHINA", "x": 70, "y": 137, "w": 26, "h": 8 }
+    ]
+  },
+
+  "pads": [
+    { "id": "V1", "x": 58, "y": 44, "stage": "SENSOR" },
+    { "id": "H1", "x": 72, "y": 44, "stage": "SENSOR" },
+    { "id": "D1", "x": 88, "y": 44, "stage": "ADC" },
+
+    { "id": "CK", "x": 58, "y": 82, "stage": "SYNC" },
+    { "id": "RST", "x": 76, "y": 82, "stage": "SYNC" },
+
+    { "id": "A4", "x": 14, "y": 96, "stage": "MEMORY" },
+    { "id": "WE", "x": 30, "y": 96, "stage": "MEMORY" },
+
+    { "id": "GND", "x": 90, "y": 106 },
+
+    { "id": "K1", "x": 22, "y": 120, "contact": true }
+  ],
+
+  "faults": [
+    { "pads": ["V1", "H1"], "param": "uLineSkip", "min": 0.1, "max": 1.0, "value": 0.7 },
+    { "pads": ["H1", "CK"], "param": "uColumnShift", "min": 0.1, "max": 1.0, "value": 0.65 },
+    { "pads": ["D1", "GND"], "param": "uBitCrush", "min": 0.1, "max": 1.0, "value": 0.75 },
+    { "pads": ["D1", "V1"], "param": "uBitSwap", "min": 0.1, "max": 1.0, "value": 0.7 },
+    { "pads": ["A4", "WE"], "param": "uAddrShort", "min": 0.1, "max": 1.0, "value": 0.7 },
+    { "pads": ["WE", "GND"], "param": "uStale", "min": 0.1, "max": 1.0, "value": 0.7 },
+    { "pads": ["CK", "RST"], "param": "uTear", "min": 0.1, "max": 1.0, "value": 0.7 },
+    { "pads": ["CK", "GND"], "param": "uStarve", "min": 0.1, "max": 0.95, "value": 0.7 },
+
+    { "pads": ["V1", "GND"], "param": "uStuck", "min": 0.1, "max": 1.0, "value": 0.7 },
+    { "pads": ["A4", "CK"], "param": "uFeedback", "min": 0.1, "max": 1.0, "value": 0.7 },
+
+    { "pads": ["H1", "GND"], "param": "uWobble", "min": 0.1, "max": 1.0, "value": 0.75 },
+    { "pads": ["D1", "H1"], "param": "uChannelDrop", "min": 0.1, "max": 1.0, "value": 0.7 },
+    { "pads": ["WE", "CK"], "param": "uMirror", "min": 0.1, "max": 1.0, "value": 0.75 },
+
+    { "pads": ["RST", "GND"], "crash": true },
+    { "pads": ["A4", "GND"], "crash": true },
+    { "pads": ["D1", "CK"], "crash": true }
+  ],
+
+  "contacts": [
+    { "pad": "K1", "param": "uFold", "max": 1.0 }
+  ]
+}

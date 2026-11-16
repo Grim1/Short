@@ -1,0 +1,156 @@
+{
+  "format": 1,
+  "maker": "CSE",
+  "model": "CSE Optika DX-210",
+  "printed": ["2.1 MEGA PIXELS", "3x OPTICAL ZOOM"],
+  "serial": "CSE-DX210-0471136",
+  "madeIn": "MADE IN TAIWAN",
+  "shell": "#C4C6CA",
+  "ink": "#26282C",
+  "accent": "#8C1D18",
+  "viewfinder": {
+    "font": "sans",
+    "color": "#F4F4F0",
+    "shots": 127,
+    "osd": { "topLeft": "P  AUTO", "topRight": "{shots}", "bottomRight": "2M FINE" },
+    "shutter": { "length": 0.09, "noise": 0.5, "beep": 2400 },
+    "boot": { "seconds": 1.8, "background": "#0C1016", "lines": ["CSE", "Optika DX-210", "2.1 MEGA PIXELS"], "exit": "fade" }
+  },
+  "zoom": 3,
+  "crosstalk": 0.55,
+
+  "sensor": { "width": 1600, "height": 1200 },
+  "preview": { "width": 800, "height": 600 },
+  "stages": ["SENSOR", "ADC", "MEMORY", "ENCODER", "SYNC", "COMPRESSOR"],
+  "stability": 0.8,
+
+  "board": {
+    "width": 100,
+    "height": 190,
+    "color": "#1B5E3F",
+    "preview": { "x": 6, "y": 10, "w": 36, "h": 48 },
+    "parts": [
+      { "type": "conn", "label": "", "x": 56, "y": 4, "w": 32, "h": 5 },
+      { "type": "silk", "label": "J1", "x": 51, "y": 5, "h": 2.2 },
+      { "type": "ic", "label": "CSE 4C12\nV-DRV", "x": 54, "y": 14, "w": 36, "h": 16, "stage": "SENSOR" },
+      { "type": "ic", "label": "CSE 9A08\nADC", "x": 56, "y": 50, "w": 32, "h": 15, "stage": "ADC" },
+      { "type": "ic", "label": "CSE 7C1021\nSRAM 1M", "x": 8, "y": 70, "w": 36, "h": 24, "stage": "MEMORY" },
+      { "type": "ic", "label": "CSE 2K5\nTG", "x": 58, "y": 88, "w": 22, "h": 13, "stage": "SYNC" },
+      { "type": "xtal", "label": "X1", "x": 84, "y": 89, "w": 11, "h": 6 },
+      { "type": "ic", "label": "CSE 3E77\nENC", "x": 8, "y": 118, "w": 32, "h": 15, "stage": "ENCODER" },
+      { "type": "ic", "label": "CSE JP-200\nJPEG ASIC", "x": 54, "y": 124, "w": 36, "h": 26, "stage": "COMPRESSOR" },
+
+      { "type": "cap", "label": "C1", "x": 46, "y": 20, "w": 6, "h": 6 },
+      { "type": "cap", "label": "C7", "x": 92, "y": 54, "w": 6, "h": 6 },
+      { "type": "cap", "label": "C12", "x": 46, "y": 84, "w": 7, "h": 7 },
+      { "type": "cap", "label": "C20", "x": 43, "y": 112, "w": 5, "h": 5 },
+      { "type": "r", "label": "", "x": 92, "y": 20, "w": 4, "h": 2 },
+      { "type": "r", "label": "", "x": 92, "y": 24, "w": 4, "h": 2 },
+      { "type": "c", "label": "", "x": 50, "y": 44, "w": 4, "h": 2 },
+      { "type": "r", "label": "", "x": 48, "y": 56, "w": 2, "h": 4 },
+      { "type": "c", "label": "", "x": 52, "y": 60, "w": 2, "h": 4 },
+      { "type": "r", "label": "", "x": 4, "y": 64, "w": 4, "h": 2 },
+      { "type": "c", "label": "", "x": 12, "y": 64, "w": 4, "h": 2 },
+      { "type": "r", "label": "", "x": 20, "y": 64, "w": 4, "h": 2 },
+      { "type": "c", "label": "", "x": 84, "y": 99, "w": 4, "h": 2 },
+      { "type": "r", "label": "", "x": 91, "y": 99, "w": 4, "h": 2 },
+      { "type": "r", "label": "", "x": 44, "y": 122, "w": 2, "h": 4 },
+      { "type": "c", "label": "", "x": 48, "y": 134, "w": 2, "h": 4 },
+      { "type": "r", "label": "", "x": 93, "y": 130, "w": 2, "h": 4 },
+      { "type": "c", "label": "", "x": 93, "y": 138, "w": 2, "h": 4 },
+      { "type": "r", "label": "", "x": 6, "y": 151, "w": 4, "h": 2 },
+      { "type": "c", "label": "", "x": 14, "y": 151, "w": 4, "h": 2 },
+
+      { "type": "led", "label": "PWR", "x": 47, "y": 6, "w": 3, "h": 3 },
+      { "type": "led", "label": "D2", "x": 91, "y": 82, "w": 3, "h": 3, "stage": "SYNC" },
+      { "type": "led", "label": "D3", "x": 4, "y": 100, "w": 3, "h": 3, "stage": "MEMORY" },
+      { "type": "led", "label": "D5", "x": 94, "y": 152, "w": 3, "h": 3, "stage": "COMPRESSOR" },
+
+      { "type": "logo", "label": "CSE", "x": 6, "y": 177, "w": 18, "h": 8 },
+      { "type": "silk", "label": "COLD SOLDER ELECTRIC CO.", "x": 27, "y": 177, "h": 2.2 },
+      { "type": "silk", "label": "DX-210 MAIN PCB REV C", "x": 27, "y": 180.5, "h": 2.2 },
+      { "type": "silk", "label": "S/N CSE-DX210-0471136", "x": 27, "y": 184, "h": 2.2 },
+      { "type": "sticker", "label": "MADE IN TAIWAN", "x": 70, "y": 177, "w": 26, "h": 8 }
+    ]
+  },
+
+  "pads": [
+    { "id": "V1", "x": 54, "y": 39, "stage": "SENSOR" },
+    { "id": "V2", "x": 66, "y": 39, "stage": "SENSOR" },
+    { "id": "H1", "x": 78, "y": 39, "stage": "SENSOR" },
+    { "id": "SUB", "x": 90, "y": 39, "stage": "SENSOR" },
+
+    { "id": "D0", "x": 58, "y": 74, "stage": "ADC" },
+    { "id": "D3", "x": 70, "y": 74, "stage": "ADC" },
+    { "id": "D7", "x": 82, "y": 74, "stage": "ADC" },
+    { "id": "VREF", "x": 94, "y": 74, "stage": "ADC" },
+
+    { "id": "A6", "x": 10, "y": 103, "stage": "MEMORY" },
+    { "id": "A9", "x": 22, "y": 103, "stage": "MEMORY" },
+    { "id": "WE", "x": 34, "y": 103, "stage": "MEMORY" },
+    { "id": "OE", "x": 46, "y": 103, "stage": "MEMORY" },
+
+    { "id": "CLK", "x": 58, "y": 110, "stage": "SYNC" },
+    { "id": "HD", "x": 70, "y": 110, "stage": "SYNC" },
+    { "id": "VD", "x": 82, "y": 110, "stage": "SYNC" },
+
+    { "id": "RY", "label": "R-Y", "x": 10, "y": 142, "stage": "ENCODER" },
+    { "id": "BY", "label": "B-Y", "x": 22, "y": 142, "stage": "ENCODER" },
+    { "id": "SC", "x": 34, "y": 142, "stage": "ENCODER" },
+
+    { "id": "Q0", "x": 58, "y": 159, "stage": "COMPRESSOR" },
+    { "id": "HUF", "x": 70, "y": 159, "stage": "COMPRESSOR" },
+    { "id": "TP9", "x": 82, "y": 159, "stage": "COMPRESSOR" },
+
+    { "id": "TP4", "x": 47, "y": 146 },
+    { "id": "GND", "x": 94, "y": 167 },
+
+    { "id": "K1", "x": 11, "y": 164, "contact": true },
+    { "id": "K2", "x": 26, "y": 164, "contact": true },
+    { "id": "K3", "x": 41, "y": 164, "contact": true }
+  ],
+
+  "faults": [
+    { "pads": ["V1", "V2"], "param": "uLineSkip", "min": 0.08, "max": 1.0, "value": 0.6 },
+    { "pads": ["H1", "CLK"], "param": "uColumnShift", "min": 0.08, "max": 1.0, "value": 0.6 },
+    { "pads": ["SUB", "GND"], "param": "uSmear", "min": 0.1, "max": 1.0, "value": 0.7 },
+
+    { "pads": ["D0", "GND"], "param": "uBitCrush", "min": 0.08, "max": 1.0, "value": 0.55 },
+    { "pads": ["D3", "D7"], "param": "uBitSwap", "min": 0.08, "max": 1.0, "value": 0.6 },
+    { "pads": ["VREF", "TP4"], "param": "uFold", "min": 0.08, "max": 1.0, "value": 0.6 },
+
+    { "pads": ["A6", "A9"], "param": "uAddrShort", "min": 0.08, "max": 1.0, "value": 0.55 },
+    { "pads": ["WE", "GND"], "param": "uStale", "min": 0.08, "max": 1.0, "value": 0.6 },
+    { "pads": ["OE", "WE"], "param": "uTrails", "min": 0.1, "max": 1.0, "value": 0.75 },
+
+    { "pads": ["RY", "BY"], "param": "uChromaSwap", "min": 0.08, "max": 1.0, "value": 0.6 },
+    { "pads": ["SC", "HD"], "param": "uChromaDelay", "min": 0.08, "max": 1.0, "value": 0.6 },
+    { "pads": ["SC", "TP4"], "param": "uChromaDrift", "min": 0.08, "max": 1.0, "value": 0.6 },
+
+    { "pads": ["HD", "CLK"], "param": "uTear", "min": 0.08, "max": 1.0, "value": 0.6 },
+    { "pads": ["VD", "GND"], "param": "uRoll", "min": 0.08, "max": 1.0, "value": 0.55 },
+    { "pads": ["CLK", "GND"], "param": "uStarve", "min": 0.08, "max": 0.9, "value": 0.5 },
+
+    { "pads": ["HUF", "D7"], "param": "uBlockCorrupt", "min": 0.08, "max": 1.0, "value": 0.6 },
+    { "pads": ["Q0", "TP9"], "param": "uQuant", "min": 0.08, "max": 1.0, "value": 0.6 },
+
+    { "pads": ["SUB", "V2"], "param": "uStuck", "min": 0.1, "max": 1.0, "value": 0.6 },
+    { "pads": ["A6", "OE"], "param": "uFeedback", "min": 0.1, "max": 1.0, "value": 0.65 },
+    { "pads": ["RY", "SC"], "param": "uHueSpin", "min": 0.1, "max": 1.0, "value": 0.5 },
+
+    { "pads": ["H1", "V1"], "param": "uWobble", "min": 0.1, "max": 1.0, "value": 0.6 },
+    { "pads": ["D0", "D3"], "param": "uChannelDrop", "min": 0.1, "max": 1.0, "value": 0.55 },
+    { "pads": ["A9", "WE"], "param": "uMirror", "min": 0.1, "max": 1.0, "value": 0.6 },
+    { "pads": ["BY", "SC"], "param": "uColorKill", "min": 0.1, "max": 1.0, "value": 0.55 },
+
+    { "pads": ["VD", "HD"], "crash": true },
+    { "pads": ["TP9", "GND"], "crash": true },
+    { "pads": ["CLK", "VREF"], "crash": true }
+  ],
+
+  "contacts": [
+    { "pad": "K1", "param": "uStarve", "max": 0.9 },
+    { "pad": "K2", "param": "uFold", "max": 1.0 },
+    { "pad": "K3", "param": "uChromaDrift", "max": 1.0 }
+  ]
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A camera lens with a jumper wire soldered across it. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Lens barrel, from the outside in. -->
+    <path android:fillColor="#14301F" android:pathData="M54,56m-25,0a25,25 0 1,0 50,0a25,25 0 1,0 -50,0" />
+    <path android:fillColor="#DADCE0" android:pathData="M54,54m-24,0a24,24 0 1,0 48,0a24,24 0 1,0 -48,0" />
+    <path android:fillColor="#8E9197" android:pathData="M54,54m-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0" />
+    <path android:fillColor="#1E1F22" android:pathData="M54,54m-18,0a18,18 0 1,0 36,0a18,18 0 1,0 -36,0" />
+    <path android:fillColor="#101426" android:pathData="M54,54m-13,0a13,13 0 1,0 26,0a13,13 0 1,0 -26,0" />
+    <path android:fillColor="#31407A" android:pathData="M54,54m-8,0a8,8 0 1,0 16,0a8,8 0 1,0 -16,0" />
+    <path android:fillColor="#B8C4F0" android:fillAlpha="0.8" android:pathData="M49,48m-3,0a3,3 0 1,0 6,0a3,3 0 1,0 -6,0" />
+
+    <!-- Solder pads. -->
+    <path android:fillColor="#D8B24A" android:pathData="M30,76m-5,0a5,5 0 1,0 10,0a5,5 0 1,0 -10,0M78,32m-5,0a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+    <!-- The wire, with a darker edge so it reads over the lens. -->
+    <path
+        android:strokeColor="#7A1410"
+        android:strokeWidth="6.5"
+        android:strokeLineCap="round"
+        android:pathData="M30,76Q62,74 78,32" />
+    <path
+        android:strokeColor="#E0362B"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:pathData="M30,76Q62,74 78,32" />
+    <!-- Solder blobs over the wire ends. -->
+    <path android:fillColor="#E9E9EC" android:pathData="M30,76m-2.6,0a2.6,2.6 0 1,0 5.2,0a2.6,2.6 0 1,0 -5.2,0M78,32m-2.6,0a2.6,2.6 0 1,0 5.2,0a2.6,2.6 0 1,0 -5.2,0" />
+</vector>

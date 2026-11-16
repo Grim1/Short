@@ -1,0 +1,134 @@
+{
+  "format": 1,
+  "maker": "CSE",
+  "model": "CSE Sonora V8 Hi-Band",
+  "printed": ["8x POWER ZOOM", "AUTO TRACKING"],
+  "serial": "CSE-SV8HB-0082214",
+  "madeIn": "MADE IN JAPAN",
+  "shell": "#34363A",
+  "ink": "#E6E6DE",
+  "accent": "#E8A13A",
+  "viewfinder": {
+    "font": "mono",
+    "color": "#FFFFFF",
+    "osd": { "topLeft": "SP", "topRight": "{timer}", "bottomLeft": "{date}", "bottomRight": "AUTO TRK" },
+    "shutter": { "length": 0.14, "noise": 0.8, "beep": 0 },
+    "boot": { "seconds": 2.2, "background": "#1616B4", "lines": ["CSE", "SONORA V8 Hi-Band", "TAPE LOADING"], "exit": "wipe" }
+  },
+  "zoom": 8,
+  "crosstalk": 0.7,
+
+  "sensor": { "width": 640, "height": 480 },
+  "preview": { "width": 640, "height": 480 },
+  "stages": ["SENSOR", "ADC", "MEMORY", "ENCODER", "SYNC"],
+  "stability": 0.6,
+  "chromaSoftness": 0.7,
+
+  "board": {
+    "width": 100,
+    "height": 190,
+    "color": "#6B4A1E",
+    "preview": { "x": 6, "y": 10, "w": 36, "h": 48 },
+    "parts": [
+      { "type": "conn", "label": "", "x": 56, "y": 4, "w": 32, "h": 5 },
+      { "type": "silk", "label": "CN1", "x": 49, "y": 5, "h": 2.2 },
+      { "type": "ic", "label": "CSE 6H40\nCCD DRV", "x": 54, "y": 14, "w": 36, "h": 14, "stage": "SENSOR" },
+      { "type": "ic", "label": "CSE 8B10\nA/D", "x": 56, "y": 48, "w": 34, "h": 14, "stage": "ADC" },
+      { "type": "ic", "label": "CSE 1M\nFIELD MEM", "x": 8, "y": 68, "w": 36, "h": 22, "stage": "MEMORY" },
+      { "type": "ic", "label": "CSE 2S90\nSYNC GEN", "x": 54, "y": 92, "w": 36, "h": 16, "stage": "SYNC" },
+      { "type": "ic", "label": "CSE 3C58\nCHROMA", "x": 8, "y": 114, "w": 36, "h": 16, "stage": "ENCODER" },
+
+      { "type": "cap", "label": "C3", "x": 44, "y": 16, "w": 8, "h": 8 },
+      { "type": "cap", "label": "C9", "x": 46, "y": 50, "w": 8, "h": 8 },
+      { "type": "cap", "label": "C14", "x": 46, "y": 72, "w": 7, "h": 7 },
+      { "type": "cap", "label": "C21", "x": 60, "y": 146, "w": 10, "h": 10 },
+      { "type": "cap", "label": "C22", "x": 76, "y": 146, "w": 10, "h": 10 },
+      { "type": "xtal", "label": "X1", "x": 46, "y": 96, "w": 6, "h": 11 },
+      { "type": "r", "label": "", "x": 93, "y": 16, "w": 4, "h": 2 },
+      { "type": "r", "label": "", "x": 93, "y": 21, "w": 4, "h": 2 },
+      { "type": "c", "label": "", "x": 93, "y": 50, "w": 4, "h": 2 },
+      { "type": "r", "label": "", "x": 4, "y": 62, "w": 4, "h": 2 },
+      { "type": "c", "label": "", "x": 12, "y": 62, "w": 4, "h": 2 },
+      { "type": "r", "label": "", "x": 93, "y": 96, "w": 2, "h": 4 },
+      { "type": "c", "label": "", "x": 46, "y": 118, "w": 2, "h": 4 },
+      { "type": "r", "label": "", "x": 4, "y": 150, "w": 4, "h": 2 },
+
+      { "type": "led", "label": "PWR", "x": 46, "y": 6, "w": 3, "h": 3 },
+      { "type": "led", "label": "D1", "x": 93, "y": 86, "w": 3, "h": 3, "stage": "SYNC" },
+      { "type": "led", "label": "D4", "x": 4, "y": 108, "w": 3, "h": 3, "stage": "ENCODER" },
+
+      { "type": "logo", "label": "CSE", "x": 6, "y": 177, "w": 18, "h": 8 },
+      { "type": "silk", "label": "COLD SOLDER ELECTRIC CO.", "x": 27, "y": 177, "h": 2.2 },
+      { "type": "silk", "label": "SV8 VIDEO PCB REV B", "x": 27, "y": 180.5, "h": 2.2 },
+      { "type": "silk", "label": "S/N CSE-SV8HB-0082214", "x": 27, "y": 184, "h": 2.2 },
+      { "type": "sticker", "label": "MADE IN JAPAN", "x": 70, "y": 177, "w": 26, "h": 8 }
+    ]
+  },
+
+  "pads": [
+    { "id": "H1", "x": 58, "y": 37, "stage": "SENSOR" },
+    { "id": "SUB", "x": 74, "y": 37, "stage": "SENSOR" },
+
+    { "id": "AGC", "x": 60, "y": 71, "stage": "ADC" },
+    { "id": "VREF", "x": 76, "y": 71, "stage": "ADC" },
+    { "id": "D5", "x": 92, "y": 71, "stage": "ADC" },
+
+    { "id": "WE", "x": 12, "y": 99, "stage": "MEMORY" },
+    { "id": "RE", "x": 26, "y": 99, "stage": "MEMORY" },
+    { "id": "FB", "x": 40, "y": 99, "stage": "MEMORY" },
+
+    { "id": "HSYNC", "label": "HS", "x": 58, "y": 117, "stage": "SYNC" },
+    { "id": "VSYNC", "label": "VS", "x": 72, "y": 117, "stage": "SYNC" },
+    { "id": "CTL", "x": 86, "y": 117, "stage": "SYNC" },
+    { "id": "PG", "x": 86, "y": 134, "stage": "SYNC" },
+
+    { "id": "BURST", "label": "BST", "x": 12, "y": 139, "stage": "ENCODER" },
+    { "id": "CHR", "x": 26, "y": 139, "stage": "ENCODER" },
+    { "id": "APC", "x": 40, "y": 139, "stage": "ENCODER" },
+
+    { "id": "TP2", "x": 50, "y": 150 },
+    { "id": "GND", "x": 93, "y": 166 },
+
+    { "id": "K1", "x": 14, "y": 163, "contact": true },
+    { "id": "K2", "x": 34, "y": 163, "contact": true }
+  ],
+
+  "faults": [
+    { "pads": ["H1", "HSYNC"], "param": "uColumnShift", "min": 0.08, "max": 1.0, "value": 0.55 },
+    { "pads": ["SUB", "GND"], "param": "uSmear", "min": 0.1, "max": 1.0, "value": 0.75 },
+
+    { "pads": ["AGC", "VREF"], "param": "uFold", "min": 0.08, "max": 1.0, "value": 0.55 },
+    { "pads": ["D5", "GND"], "param": "uBitCrush", "min": 0.08, "max": 1.0, "value": 0.5 },
+
+    { "pads": ["WE", "GND"], "param": "uStale", "min": 0.08, "max": 1.0, "value": 0.6 },
+    { "pads": ["FB", "RE"], "param": "uTrails", "min": 0.1, "max": 1.0, "value": 0.85 },
+
+    { "pads": ["CHR", "APC"], "param": "uChromaDelay", "min": 0.08, "max": 1.0, "value": 0.7 },
+    { "pads": ["BURST", "TP2"], "param": "uChromaDrift", "min": 0.08, "max": 1.0, "value": 0.6 },
+    { "pads": ["BURST", "CHR"], "param": "uChromaSwap", "min": 0.08, "max": 1.0, "value": 0.6 },
+
+    { "pads": ["HSYNC", "CTL"], "param": "uTear", "min": 0.08, "max": 1.0, "value": 0.6 },
+    { "pads": ["VSYNC", "GND"], "param": "uRoll", "min": 0.08, "max": 1.0, "value": 0.55 },
+    { "pads": ["CTL", "PG"], "param": "uTracking", "min": 0.1, "max": 1.0, "value": 0.7 },
+    { "pads": ["PG", "GND"], "param": "uStarve", "min": 0.08, "max": 0.9, "value": 0.5 },
+
+    { "pads": ["H1", "SUB"], "param": "uStuck", "min": 0.1, "max": 1.0, "value": 0.5 },
+    { "pads": ["FB", "WE"], "param": "uFeedback", "min": 0.1, "max": 1.0, "value": 0.7 },
+    { "pads": ["APC", "TP2"], "param": "uHueSpin", "min": 0.1, "max": 1.0, "value": 0.55 },
+    { "pads": ["VSYNC", "PG"], "param": "uComb", "min": 0.1, "max": 1.0, "value": 0.65 },
+    { "pads": ["CTL", "GND"], "param": "uDropout", "min": 0.1, "max": 1.0, "value": 0.6 },
+
+    { "pads": ["H1", "GND"], "param": "uWobble", "min": 0.1, "max": 1.0, "value": 0.65 },
+    { "pads": ["AGC", "D5"], "param": "uChannelDrop", "min": 0.1, "max": 1.0, "value": 0.55 },
+    { "pads": ["RE", "WE"], "param": "uMirror", "min": 0.1, "max": 1.0, "value": 0.6 },
+    { "pads": ["CHR", "TP2"], "param": "uColorKill", "min": 0.1, "max": 1.0, "value": 0.6 },
+
+    { "pads": ["VSYNC", "HSYNC"], "crash": true },
+    { "pads": ["FB", "GND"], "crash": true }
+  ],
+
+  "contacts": [
+    { "pad": "K1", "param": "uTracking", "max": 1.0 },
+    { "pad": "K2", "param": "uChromaDrift", "max": 1.0 }
+  ]
+}
